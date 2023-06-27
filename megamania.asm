@@ -8,6 +8,8 @@ main:
 	jal meteoro
 	jal nave
 	jal meteoro2
+	jal meteoro3
+	jal meteoro4
 	jal def_fundo
 	addi $17, $0, 10
 	addi $18, $0, 150
@@ -1090,6 +1092,42 @@ meteoro2:
 	sw $23, 2696($10)
 	jr $31
 	
+meteoro3: 
+	# linha 1
+	sw $23, 5732($10)
+	# linha 2
+	sw $23, 6240($10)
+	sw $23, 6244($10)
+	sw $23, 6248($10)
+	# linha 3
+	sw $23, 6752($10)
+	sw $23, 6760($10)
+	# linha 4
+	sw $23, 7264($10)
+	sw $23, 7268($10)
+	sw $23, 7272($10)
+	# linha 5
+	sw $23, 7780($10)
+	jr $31
+	
+meteoro4: 
+	# linha 1
+	sw $23, 5800($10)
+	# linha 2
+	sw $23, 6308($10)
+	sw $23, 6312($10)
+	sw $23, 6316($10)
+	# linha 3
+	sw $23, 6820($10)
+	sw $23, 6828($10)
+	# linha 4
+	sw $23, 7332($10)
+	sw $23, 7336($10)
+	sw $23, 7340($10)
+	# linha 5
+	sw $23, 7848($10)
+	jr $31
+	
 apaga_meteoro:
 	# linha 1
 	sw $20, 584($10)
@@ -1126,14 +1164,54 @@ apaga_meteoro2:
 	sw $20, 2696($10)
 	jr $31
 	
+apaga_meteoro3:
+	# linha 1
+	sw $20, 5732($10)
+	# linha 2
+	sw $20, 6240($10)
+	sw $20, 6244($10)
+	sw $20, 6248($10)
+	# linha 3
+	sw $20, 6752($10)
+	sw $20, 6760($10)
+	# linha 4
+	sw $20, 7264($10)
+	sw $20, 7268($10)
+	sw $20, 7272($10)
+	# linha 5
+	sw $20, 7780($10)
+	jr $31
+	
+apaga_meteoro4:
+	# linha 1
+	sw $20, 5800($10)
+	# linha 2
+	sw $20, 6308($10)
+	sw $20, 6312($10)
+	sw $20, 6316($10)
+	# linha 3
+	sw $20, 6820($10)
+	sw $20, 6828($10)
+	# linha 4
+	sw $20, 7332($10)
+	sw $20, 7336($10)
+	sw $20, 7340($10)
+	# linha 5
+	sw $20, 7848($10)
+	jr $31
+	
 move_meteoros:
 	beq $17, $0, direita
 	addi $17, $17, -1
 	jal meteoro
 	jal meteoro2
+	jal meteoro3
+	jal meteoro4
 	jal delay_meteoro
 	jal apaga_meteoro
 	jal apaga_meteoro2
+	jal apaga_meteoro3
+	jal apaga_meteoro4
 	j move_meteoros
 	
 direita:
@@ -1141,13 +1219,17 @@ direita:
 	j move_meteoros_direita
 	
 move_meteoros_direita:
-	addi $17, $17, -1
+	addi $17, $17, -4
 	addi $10, $10, 4
 	jal meteoro
 	jal meteoro2
+	jal meteoro3
+	jal meteoro4
 	jal delay_meteoro
 	jal apaga_meteoro
 	jal apaga_meteoro2
+	jal apaga_meteoro3
+	jal apaga_meteoro4
 	j move_meteoros_direita
 
 nave:
