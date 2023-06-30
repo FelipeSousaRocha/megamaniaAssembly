@@ -38,13 +38,12 @@ fundo:
 	sw $20, 0($10)
 	# imprimir cor em $20, na posicao 0
 	# apos o #10
-	# sll $20, $20, 4
 	addi $10, $10, 4 # pulo
 	addi $9, $9, -1 # reducao do lado
 	j fundo
 	
 delay_meteoro:
-	addi $16, $0, -10000 # tempo = velocidade
+	addi $16, $0, -3000 # tempo = velocidade
 	
 delay_loop:
 	addi $16, $16, 1 #gerar loop
@@ -1215,11 +1214,9 @@ move_meteoros:
 	j move_meteoros
 	
 direita:
-	addi $17, $17, 100
 	j move_meteoros_direita
 	
 move_meteoros_direita:
-	addi $17, $17, -4
 	addi $10, $10, 4
 	jal meteoro
 	jal meteoro2
