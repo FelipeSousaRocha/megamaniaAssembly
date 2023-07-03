@@ -7,6 +7,7 @@ main:
 	jal activision
 	jal meteoro
 	jal nave
+	jal raio
 	jal meteoro2
 	jal meteoro3
 	jal meteoro4
@@ -23,6 +24,7 @@ cor:
 	addi $22, $0, 0xffff00 # amarelo
 	addi $23, $0, 0x00b050 # verde
 	addi $24, $0, 0x787878 #cinza
+	addi $25, $0, 0xFF0000 #cinza
 	jr $31 #volte para onde foi chamado main
 	
 def_fundo: 
@@ -1269,6 +1271,11 @@ nave:
 	#linha 9
 	sw $21, 23304($10)
 	sw $21, 23328($10)
+	jr $31
+
+raio:
+	# linha 1
+	sw $25, 18708($10)
 	jr $31
 
 fim:
