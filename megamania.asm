@@ -14,6 +14,7 @@ main:
 	jal def_fundo
 	addi $17, $0, 10
 	addi $18, $0, 150
+	#jal move_raio
 	jal move_meteoros
 	jal nave
 	j fim
@@ -24,7 +25,7 @@ cor:
 	addi $22, $0, 0xffff00 # amarelo
 	addi $23, $0, 0x00b050 # verde
 	addi $24, $0, 0x787878 #cinza
-	addi $25, $0, 0xFF0000 #cinza
+	addi $25, $0, 0xFF0000 #vermelho
 	jr $31 #volte para onde foi chamado main
 	
 def_fundo: 
@@ -46,6 +47,9 @@ fundo:
 	
 delay_meteoro:
 	addi $16, $0, -3000 # tempo = velocidade
+	
+#delay_raio:
+#	addi $16, $0, -30000 # tempo = velocidade
 	
 delay_loop:
 	addi $16, $16, 1 #gerar loop
@@ -1276,7 +1280,32 @@ nave:
 raio:
 	# linha 1
 	sw $25, 18708($10)
+	#sw $25, 18196($10)
 	jr $31
+	
+#apaga_raio:
+	# linha 1
+#	sw $20, 18708($10)
+#	sw $20, 18196($10)
+#	jr $31
+	
+#move_raio:
+#	beq $17, $0, cima
+#	addi $17, $17, -1
+#	jal raio
+#	jal delay_raio
+#	jal apaga_raio
+#	j move_raio
+	
+#cima:
+#	j move_raio_cima
+	
+#move_raio_cima:
+#	addi $10, $10, -512
+#	jal raio
+#	jal delay_raio
+#	jal apaga_raio
+#	j move_raio_cima
 
 fim:
 	j fim
